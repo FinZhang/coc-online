@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function toreg()
+        {
+            document.getElementById("main").style.display="none";
+            document.getElementById("register").style.display="block";
+            document.getElementById("login").style.display="none";
+            document.getElementById("talk").style.display="none";
+        }
+        function tomain()
+        {
+            document.getElementById("main").style.display="block";
+            document.getElementById("register").style.display="none";
+            document.getElementById("login").style.display="none";
+            document.getElementById("talk").style.display="none";
+        }
+        function tologin()
+        {
+            document.getElementById("main").style.display="none";
+            document.getElementById("register").style.display="none";
+            document.getElementById("login").style.display="block";
+            document.getElementById("talk").style.display="none";
+        }
+        function totalk()
+        {
+            document.getElementById("main").style.display="none";
+            document.getElementById("register").style.display="none";
+            document.getElementById("login").style.display="none";
+            document.getElementById("talk").style.display="block";
+        }        
+    </script>
+    <style>
+        .ma{
+            width:960px;
+            height:480px;
+            background-color: rgb(255, 255, 255);
+            border:1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <h3>这只是一个跑团页面</h3>
+        <button onmouseup="toreg()">注册</button>
+        <button onmouseup="tologin()">登录</button>
+        <button onmouseup="totalk()">开始跑团</button>
+    </div>
+
+    <div id="register" style="display:none">
+        <p>这里只是一个没有用的注册页面<br>
+        请设定用户名<br>
+        <input type="text" name="lusername"><br>
+        请设定密码<br>
+        <input type="password" name="lpw"><br>
+        请再次输入密码<br>
+        <input type="password" name="lpwag"><br>
+        <button onmouseup="tomain()">注册</button>
+        <button onmouseup="tomain()">返回主页</button>
+        </p>
+    </div>    
+
+    <div id="login" style="display:none">
+        <p>
+            这里只是一个没有用的登录界面<br>
+            请输入用户名<br>
+            <input type="text" name="rusername"><br>
+            请输入密码<br>
+            <input type="password" name="rpw"><br>
+            <button onmouseup="tomain()">登录</button>
+            <button onmouseup="tomain()">返回主页</button>
+        </p>
+    </div>
+
+    <div id="talk" class="talk" style="display:none">
+        <div class="ma">一些占位符</div>
+        <textarea rows="8" cols="40"></textarea><br>
+        <button>发言</button>
+        <button onmouseup="tomain()">返回主页</button>
+    </div>
+
+</body>
+</html>
