@@ -1,12 +1,12 @@
 # coc-online
 
-## introduction
+## Introduction
 an online coc game platform
 
-- /tools useful related tools for game
-- index.html index
+- `/tools` useful related tools for game
+- `index.html` index
 
-## todo
+## TODO
 - IM (via leancloud)
 - user login & register (via leancloud)
 - dice bot
