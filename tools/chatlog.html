@@ -1,0 +1,64 @@
+<html>
+<head>
+    <style type="text/css">
+        #source {
+            float: left;
+            width: 45%;
+            height: 100%;
+        }
+
+        #output {
+            float: right;
+            width: 45%;
+            height: 100%;
+            border: 1px solid gray;
+            text-align: start;
+            overflow: scroll;
+        }
+
+        body {
+            text-align: center;
+        }
+
+        .chat-item {
+            padding: .5rem;
+        }
+
+        .meta {
+            font-weight: bold;
+        }
+
+        .user-0 {
+            background-color: lightcoral;
+        }
+
+        .user-1 {
+            background-color: lightcyan;
+        }
+
+        .user-2 {
+            background-color: lightgreen;
+        }
+
+        .user-3 {
+            background-color: lightyellow;
+        }
+
+    </style>
+    <script type="text/javascript" src="chatlog.js"></script>
+</head>
+<body>
+    <textarea id="source"></textarea>
+    <div id="output"></div>
+    <input type="button" id="exec" value="转换>>"/>
+
+    <script type="text/javascript">
+        CLH.USER_NICKS = ["KP", "零崎人识", "拉尔夫", "投骰姬"];
+        document.getElementById("exec").onclick = () => {
+            let source = document.getElementById("source");
+            let output = document.getElementById("output");
+            output.innerHTML = CLH.convert(source.value);
+        };
+    </script>
+</body>
+</html>
