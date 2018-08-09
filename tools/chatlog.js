@@ -23,9 +23,10 @@ CLH.convert = function(raw) {
     raw.split("\n").forEach(line => {
         // determine whether meta line
         let arr = line.split(/\s+/);
-        if (arr.length === 2 && (userIndex = CLH.USER_NICKS.indexOf(arr[0]) >= 0 && 
-            arr[1].match(/\d:\d\d:\d\d$/))) {   // is meta line
+        if (arr.length === 2 && (userIndex = CLH.USER_NICKS.indexOf(arr[0])) >= 0 && 
+            arr[1].match(/\d:\d\d:\d\d$/)) {   // is meta line
             if (CLH.MERGE_CONTINUOUS_MESSAGES && lastSpokenUserNick === arr[0]) return; // merge
+            lastSpokenUserNick = arr[0];
             if (!isFirstBlock) output.push('</div>');
             isFirstBlock = false;
             output.push('<div class="chat-item user-' + userIndex + '"><span class="meta">' + line + '</span>');
