@@ -11,6 +11,9 @@ CLH.MERGE_CONTINUOUS_MESSAGES = true;
 // to identify users
 CLH.USER_NICKS = [];
 
+// use for user leave someplace blank 
+CLH.INVALID_USER_NICK = "InvalidUserNick_654378905724936750";
+
 // ====== public setting  end  ======
 
 CLH.convert = function(raw) {

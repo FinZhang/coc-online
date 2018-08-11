@@ -12,4 +12,4 @@ an online coc game platform
 - dice bot
 - deployment (via github pages & leancloud engine or ztx?)
 - beautify
-- migrate tools to JavaScript online version?
+- <del>migrate tools to JavaScript online version?</del> done

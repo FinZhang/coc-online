@@ -7,7 +7,7 @@
             height: 100%;
         }
 
-        #output {
+        #output, #output2 {
             float: right;
             width: 45%;
             height: 100%;
@@ -20,6 +20,10 @@
             text-align: center;
         }
 
+        .middle {
+            margin-bottom: 10px;
+        }
+
         .chat-item {
             padding: .5rem;
         }
@@ -29,7 +33,7 @@
         }
 
         .user-0 {
-            background-color: lightcoral;
+            background-color: lightgrey;
         }
 
         .user-1 {
@@ -41,7 +45,7 @@
         }
 
         .user-3 {
-            background-color: lightyellow;
+            background-color: lightskyblue;
         }
 
     </style>
@@ -50,15 +54,84 @@
 <body>
     <textarea id="source"></textarea>
     <div id="output"></div>
-    <input type="button" id="exec" value="转换>>"/>
+    <textarea id="output2" style="display: none;"></textarea>
+
+    <div class="middle">
+        user-0:<br>
+        <input id="user-0-name" type="text" size="12"/><br>
+        颜色 <input id="user-0-color" type="color" value="#f08080" />
+    </div>
+    <div class="middle">
+        user-1:<br>
+        <input id="user-1-name" type="text" size="12"/><br>
+        颜色 <input id="user-1-color" type="color" value="#e0ffff" />
+    </div>
+    <div class="middle">
+        user-2:<br>
+        <input id="user-2-name" type="text" size="12"/><br>
+        颜色 <input id="user-2-color" type="color" value="#90ee90" />
+    </div>
+    <div class="middle">
+        user-3:<br>
+        <input id="user-3-name" type="text" size="12"/><br>
+        颜色 <input id="user-3-color" type="color" value="#ffffe0" />
+    </div>
+    <div class="middle">
+        user-4:<br>
+        <input id="user-4-name" type="text" size="12"/><br>
+        颜色 <input id="user-4-color" type="color" value="#87cefa" />
+    </div>
+    <div class="middle">
+        user-5:<br>
+        <input id="user-5-name" type="text" size="12"/><br>
+        颜色 <input id="user-5-color" type="color" value="#d3d3d3" />
+    </div>
+
+    <div class="middle">
+        <label><input id="merge" name="merge" type="checkbox" checked="checked" />合并会话</label>
+    </div>    
+    <div class="middle">    
+        <input type="button" id="exec" value="转换>>"/>
+    </div>
+    <div class="middle">
+        <input type="button" id="copy" value="复制结果"/>
+    </div>
 
     <script type="text/javascript">
-        CLH.USER_NICKS = ["KP", "零崎人识", "拉尔夫", "投骰姬"];
+
         document.getElementById("exec").onclick = () => {
+            // initialize
+            CLH.USER_NICKS = [];
+            let colortheme = document.getElementById("color-theme");
+            colortheme.innerText = "";
+            for (let i = 0; i < 6; i++) {
+                // read&set user nicks
+                let nick = document.getElementById("user-" + i + "-name").value.trim();
+                if (nick === "") nick = CLH.INVALID_USER_NICK;
+                CLH.USER_NICKS.push(nick);
+                // read&set color
+                let color = document.getElementById("user-" + i + "-color").value;
+                colortheme.innerText += ".user-" + i + " { background-color: " + color + "} ";
+            }
+
             let source = document.getElementById("source");
             let output = document.getElementById("output");
             output.innerHTML = CLH.convert(source.value);
         };
+
+        document.getElementById("copy").onclick = () => {
+            let output = document.getElementById("output");
+            let output2 = document.getElementById("output2");
+            output2.value = output.innerHTML;
+            output.style.display = "none";
+            output2.style.display = "block";
+            output2.select();
+        }
+
+        let mergecheck = document.getElementById("merge");
+        mergecheck.onchange = () => CLH.MERGE_CONTINUOUS_MESSAGES = mergecheck.checked;
     </script>
+
+    <style id="color-theme"></style>
 </body>
 </html>
